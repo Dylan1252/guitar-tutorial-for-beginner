@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GuitarLearn — Belajar Gitar Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">🎸 GuitarLearn</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="lesson.html">Sample Lesson</a>
+        <a href="#resources">Resources</a>
+      </nav>
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="menu">☰</button>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+      <a href="index.html">Home</a>
+      <a href="lessons.html">Lessons</a>
+      <a href="lesson.html">Sample Lesson</a>
+      <a href="#resources">Resources</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1>Belajar gitar dari nol sampai mahir</h1>
+          <p class="muted">Koleksi pelajaran terstruktur: chords, strumming, riffs, dan lagu lengkap dengan backing track.</p>
+          <div class="hero-cta">
+            <a href="lessons.html" class="btn primary">Mulai Belajar</a>
+            <a href="#featured" class="btn ghost">Lihat Lesson</a>
+          </div>
+          <ul class="benefits">
+            <li>Pelajaran terstruktur untuk pemula</li>
+            <li>Video & tab interaktif (placeholder)</li>
+            <li>Praktik dengan backing track</li>
+          </ul>
+        </div>
+        <div class="hero-right">
+          <div class="card hero-card">
+            <img src="images/hero-placeholder.jpg" alt="Guitar hero" loading="lazy">
+            <div class="card-body">
+              <h3>Featured: Basic Open Chords</h3>
+              <p class="muted">Pelajari C, G, D, E, A — langkah demi langkah.</p>
+              <a href="lesson.html" class="btn small">Lihat Lesson</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED LESSONS -->
+    <section id="featured" class="section container">
+      <h2>Featured Lessons</h2>
+      <p class="muted">Beberapa lesson yang cocok untuk pemula</p>
+      <div class="grid cards-grid">
+        <!-- cards generated in HTML for simplicity -->
+        <article class="lesson-card">
+          <img src="images/lesson-chords.jpg" alt="Chord basics">
+          <div class="lesson-body">
+            <h3>Open Chords</h3>
+            <p class="muted">C, G, D, E, A — dasar yang wajib.</p>
+            <a href="lesson.html" class="btn small">Mulai</a>
+          </div>
+        </article>
+
+        <article class="lesson-card">
+          <img src="images/lesson-strumming.jpg" alt="Strumming patterns">
+          <div class="lesson-body">
+            <h3>Strumming Dasar</h3>
+            <p class="muted">Polapola down-up untuk pemula.</p>
+            <a href="lesson.html" class="btn small">Mulai</a>
+          </div>
+        </article>
+
+        <article class="lesson-card">
+          <img src="images/lesson-songs.jpg" alt="First song">
+          <div class="lesson-body">
+            <h3>Lagu Pertama</h3>
+            <p class="muted">Chord sederhana untuk lagu populer.</p>
+            <a href="lesson.html" class="btn small">Mulai</a>
+          </div>
+        </article>
+
+        <article class="lesson-card">
+          <img src="images/lesson-tips.jpg" alt="tips">
+          <div class="lesson-body">
+            <h3>Tips Pemula</h3>
+            <p class="muted">Postur, tuning, latihan efektif.</p>
+            <a href="lessons.html" class="btn small">Lihat</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section pale">
+      <div class="container">
+        <h2>Kategori</h2>
+        <div class="chips">
+          <a href="lessons.html?cat=chords" class="chip">Chords</a>
+          <a href="lessons.html?cat=strumming" class="chip">Strumming</a>
+          <a href="lessons.html?cat=songs" class="chip">Songs</a>
+          <a href="lessons.html?cat=theory" class="chip">Theory</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="section container">
+      <h2>Resources</h2>
+      <ul class="resource-list">
+        <li>Download chord charts (placeholder)</li>
+        <li>Backing tracks (placeholder)</li>
+        <li>Recommended exercises</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 GuitarLearn • Built by you</div>
+      <nav>
+        <a href="lessons.html">Lessons</a>
+        <a href="lesson.html">Sample</a>
+        <a href="#">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

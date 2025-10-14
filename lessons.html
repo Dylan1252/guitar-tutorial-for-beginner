@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lessons — GuitarLearn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">🎸 GuitarLearn</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="lesson.html">Sample Lesson</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h1>All Lessons</h1>
+    <div class="search-row">
+      <input id="search" type="search" placeholder="Cari lesson (contoh: chords, strumming, lagu)..." />
+      <select id="filter-cat">
+        <option value="">All categories</option>
+        <option value="chords">Chords</option>
+        <option value="strumming">Strumming</option>
+        <option value="songs">Songs</option>
+        <option value="tips">Tips</option>
+      </select>
+    </div>
+
+    <div id="lessons-grid" class="grid cards-grid">
+      <!-- JS akan mengisi cards di sini -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 GuitarLearn</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // sample data: in real app data comes from API or JSON file
+    const LESSONS = [
+      { id: 'open-chords', title: 'Open Chords (C G D E A)', cat: 'chords', desc: 'Dasar chord terbuka untuk pemula', img: 'images/lesson-chords.jpg' },
+      { id: 'strumming-basic', title: 'Basic Strumming Patterns', cat: 'strumming', desc: 'Polapola down-up dan variasinya', img: 'images/lesson-strumming.jpg' },
+      { id: 'first-song', title: 'Play Your First Song', cat: 'songs', desc: 'Chord & strumming untuk 1 lagu sederhana', img: 'images/lesson-songs.jpg' },
+      { id: 'practice-tips', title: 'Practice Tips for Beginners', cat: 'tips', desc: 'Latihan efektif & kebiasaan baik', img: 'images/lesson-tips.jpg' },
+      // tambah lagi jika perlu
+    ];
+
+    // render initial
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('lessons-grid');
+      function render(list){
+        grid.innerHTML = '';
+        if(!list.length){
+          grid.innerHTML = '<p class="muted">Tidak ada lesson ditemukan.</p>';
+          return;
+        }
+        list.forEach(l => {
+          const a = document.createElement('a');
+          a.href = `lesson.html?id=${l.id}`;
+          a.className = 'lesson-card';
+          a.innerHTML = `
+            <img src="${l.img}" alt="${l.title}">
+            <div class="lesson-body">
+              <h3>${l.title}</h3>
+              <p class="muted">${l.desc}</p>
+              <div class="meta">${l.cat}</div>
+            </div>
+          `;
+          grid.appendChild(a);
+        });
+      }
+
+      render(LESSONS);
+
+      // search & filter
+      const search = document.getElementById('search');
+      const filter = document.getElementById('filter-cat');
+
+      function filterAndRender(){
+        const q = search.value.trim().toLowerCase();
+        const cat = filter.value;
+        const filtered = LESSONS.filter(l => {
+          const matchQ = l.title.toLowerCase().includes(q) || l.desc.toLowerCase().includes(q);
+          const matchCat = cat ? l.cat === cat : true;
+          return matchQ && matchCat;
+        });
+        render(filtered);
+      }
+
+      search.addEventListener('input', filterAndRender);
+      filter.addEventListener('change', filterAndRender);
+    });
+  </script>
+</body>
+</html>

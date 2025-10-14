@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lesson — GuitarLearn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">🎸 GuitarLearn</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <a class="back" href="lessons.html">← Kembali ke Lessons</a>
+
+    <article id="lesson-content">
+      <!-- JS will fill lesson details based on ?id=... -->
+      <h1 id="lesson-title">Loading...</h1>
+
+      <div class="lesson-top">
+        <div class="video-area">
+          <!-- placeholder embed: replace src with your video url or embed -->
+          <div class="video-placeholder">
+            <div class="play-icon">▶</div>
+            <p class="muted">Video player placeholder — ganti dengan embed YouTube atau file video kalian</p>
+          </div>
+        </div>
+
+        <aside class="lesson-meta">
+          <div class="card">
+            <div class="card-body">
+              <h3>Info Lesson</h3>
+              <p><strong>Category:</strong> <span id="lesson-cat">-</span></p>
+              <p><strong>Duration:</strong> 5–12 mins (est)</p>
+              <a id="start-btn" class="btn primary" href="#play">Mulai</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <section class="section">
+        <h2>Lesson Notes</h2>
+        <div id="lesson-notes">
+          <p class="muted">Deskripsi lesson akan tampil di sini.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Chord Diagrams</h2>
+        <div class="chords-grid">
+          <!-- placeholder local images -->
+          <img src="images/chords/C_major.png" alt="C major" onerror="this.style.opacity=0.4">
+          <img src="images/chords/G_major.png" alt="G major" onerror="this.style.opacity=0.4">
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">© 2025 GuitarLearn</div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // sample lessons data (same as lessons.html)
+    const LESSONS = {
+      'open-chords': { id:'open-chords', title:'Open Chords (C G D E A)', cat:'chords', notes:'Pelajari posisi jari dan transisi antar akor.'},
+      'strumming-basic': { id:'strumming-basic', title:'Basic Strumming Patterns', cat:'strumming', notes:'Mulai dengan downstroke, kemudian tambahkan upstroke.'},
+      'first-song': { id:'first-song', title:'Play Your First Song', cat:'songs', notes:'Kombinasikan chord dan pola strumming sederhana.'},
+      'practice-tips': { id:'practice-tips', title:'Practice Tips for Beginners', cat:'tips', notes:'Latihan rutin 10-20 menit setiap hari.'}
+    };
+
+    function getQueryParam(name){
+      const params = new URLSearchParams(location.search);
+      return params.get(name);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const id = getQueryParam('id') || 'open-chords';
+      const lesson = LESSONS[id] || Object.values(LESSONS)[0];
+
+      document.getElementById('lesson-title').textContent = lesson.title;
+      document.getElementById('lesson-cat').textContent = lesson.cat;
+      document.getElementById('lesson-notes').innerHTML = `<p>${lesson.notes}</p><p class="muted">Ini adalah template. Ganti konten ini sesuai lesson asli.</p>`;
+      document.getElementById('start-btn').href = '#';
+    });
+  </script>
+</body>
+</html>
