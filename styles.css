@@ -78,4 +78,11 @@ body{
   .mobile-menu-btn{display:block}
   .mobile-nav{display:none}
   .container{padding:0 12px}
+
+  body {
+  background: linear-gradient(to bottom right, #f9fafc, #eaeff5);
+  font-family: 'Inter', sans-serif;
 }
+
+}
+
