@@ -1,103 +1,305 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lessons — GuitarLearn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuitarLearn | Lessons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- GLOBAL STYLE ---------- */
+    :root {
+      --bg-dark: #121212;
+      --card-dark: #1e1e1e;
+      --accent: #ffa500;
+      --accent-hover: #ffb84c;
+      --text-main: #f5f5f5;
+      --text-secondary: #bdbdbd;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Lato', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(145deg, #121212, #1c1c1e);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      text-align: center;
+      margin: 3rem 1rem 2rem;
+      animation: fadeSlideUp 1s ease;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ---------- FILTER BUTTONS ---------- */
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+
+    .filter-buttons button {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.25rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: var(--accent);
+      color: #121212;
+      box-shadow: 0 0 12px rgba(255, 165, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- LESSON GRID ---------- */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      width: 90%;
+      max-width: 1200px;
+      margin-bottom: 4rem;
+    }
+
+    .lesson-card {
+      background: rgba(30, 30, 30, 0.9);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.6s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .lesson-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(255,165,0,0.25);
+    }
+
+    .lesson-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    .lesson-content {
+      padding: 1.25rem;
+    }
+
+    .lesson-category {
+      font-size: 0.85rem;
+      color: var(--accent-hover);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .lesson-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .lesson-btn {
+      background: var(--accent);
+      border: none;
+      color: #121212;
+      font-weight: 700;
+      border-radius: 25px;
+      padding: 0.6rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lesson-btn:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 0 12px rgba(255, 165, 0, 0.5);
+      transform: scale(1.05);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      margin: 2rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html">🎸 GuitarLearn</a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="lessons.html">Lessons</a>
-        <a href="lesson.html">Sample Lesson</a>
-      </nav>
-    </div>
+
+  <header>
+    <h1>Temukan Pelajaran Gitarmu Hari Ini</h1>
+    <p>Pilih dari berbagai kategori dan mulai perjalanan musikmu bersama GuitarLearn.</p>
   </header>
 
-  <main class="container section">
-    <h1>All Lessons</h1>
-    <div class="search-row">
-      <input id="search" type="search" placeholder="Cari lesson (contoh: chords, strumming, lagu)..." />
-      <select id="filter-cat">
-        <option value="">All categories</option>
-        <option value="chords">Chords</option>
-        <option value="strumming">Strumming</option>
-        <option value="songs">Songs</option>
-        <option value="tips">Tips</option>
-      </select>
+  <div class="filter-buttons">
+    <button class="active" data-filter="all">Semua</button>
+    <button data-filter="dasar">Dasar-Dasar</button>
+    <button data-filter="strumming">Strumming</button>
+    <button data-filter="teori">Teori Musik</button>
+    <button data-filter="latihan">Latihan Jari</button>
+  </div>
+
+  <section class="lessons-grid">
+    <!-- DASAR-DASAR -->
+    <div class="lesson-card" data-category="dasar">
+      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?auto=format&fit=crop&w=900&q=60" alt="Anatomi Gitar">
+      <div class="lesson-content">
+        <div class="lesson-category">Dasar-Dasar</div>
+        <div class="lesson-title">Anatomi Gitar</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
     </div>
 
-    <div id="lessons-grid" class="grid cards-grid">
-      <!-- JS akan mengisi cards di sini -->
+    <div class="lesson-card" data-category="dasar">
+      <img src="https://images.unsplash.com/photo-1607860108855-73326e53f87d?auto=format&fit=crop&w=900&q=60" alt="Tuning Gitar">
+      <div class="lesson-content">
+        <div class="lesson-category">Dasar-Dasar</div>
+        <div class="lesson-title">Cara Tuning Gitar</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
     </div>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© 2025 GuitarLearn</div>
+    <!-- STRUMMING -->
+    <div class="lesson-card" data-category="strumming">
+      <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=900&q=60" alt="Strumming Dasar">
+      <div class="lesson-content">
+        <div class="lesson-category">Strumming</div>
+        <div class="lesson-title">Pola Strumming Dasar</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <div class="lesson-card" data-category="strumming">
+      <img src="https://images.unsplash.com/photo-1508051123996-69f8caf4891e?auto=format&fit=crop&w=900&q=60" alt="Strumming Pop Rock">
+      <div class="lesson-content">
+        <div class="lesson-category">Strumming</div>
+        <div class="lesson-title">Strumming Pop & Rock</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
+    </div>
+
+    <!-- TEORI -->
+    <div class="lesson-card" data-category="teori">
+      <img src="https://images.unsplash.com/photo-1598488035139-2b1b68e25d14?auto=format&fit=crop&w=900&q=60" alt="Teori Musik">
+      <div class="lesson-content">
+        <div class="lesson-category">Teori Musik</div>
+        <div class="lesson-title">Pengenalan Not & Skala</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
+    </div>
+
+    <div class="lesson-card" data-category="teori">
+      <img src="https://images.unsplash.com/photo-1611162616305-7db74b6fd1e9?auto=format&fit=crop&w=900&q=60" alt="Interval">
+      <div class="lesson-content">
+        <div class="lesson-category">Teori Musik</div>
+        <div class="lesson-title">Mengenal Interval & Chord Dasar</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
+    </div>
+
+    <!-- LATIHAN JARI -->
+    <div class="lesson-card" data-category="latihan">
+      <img src="https://images.unsplash.com/photo-1513105737059-ff0cf0580b1d?auto=format&fit=crop&w=900&q=60" alt="Latihan Jari">
+      <div class="lesson-content">
+        <div class="lesson-category">Latihan Jari</div>
+        <div class="lesson-title">Pemanasan Jari Dasar</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
+    </div>
+
+    <div class="lesson-card" data-category="latihan">
+      <img src="https://images.unsplash.com/photo-1582201943115-dcc1dcf1c9c7?auto=format&fit=crop&w=900&q=60" alt="Latihan Kecepatan">
+      <div class="lesson-content">
+        <div class="lesson-category">Latihan Jari</div>
+        <div class="lesson-title">Latihan Kecepatan & Koordinasi</div>
+        <button class="lesson-btn">Mulai Belajar</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 GuitarLearn</footer>
+
   <script>
-    // sample data: in real app data comes from API or JSON file
-    const LESSONS = [
-      { id: 'open-chords', title: 'Open Chords (C G D E A)', cat: 'chords', desc: 'Dasar chord terbuka untuk pemula', img: 'images/lesson-chords.jpg' },
-      { id: 'strumming-basic', title: 'Basic Strumming Patterns', cat: 'strumming', desc: 'Polapola down-up dan variasinya', img: 'images/lesson-strumming.jpg' },
-      { id: 'first-song', title: 'Play Your First Song', cat: 'songs', desc: 'Chord & strumming untuk 1 lagu sederhana', img: 'images/lesson-songs.jpg' },
-      { id: 'practice-tips', title: 'Practice Tips for Beginners', cat: 'tips', desc: 'Latihan efektif & kebiasaan baik', img: 'images/lesson-tips.jpg' },
-      // tambah lagi jika perlu
-    ];
-
-    // render initial
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid = document.getElementById('lessons-grid');
-      function render(list){
-        grid.innerHTML = '';
-        if(!list.length){
-          grid.innerHTML = '<p class="muted">Tidak ada lesson ditemukan.</p>';
-          return;
+    // Intersection Observer untuk animasi muncul
+    const cards = document.querySelectorAll('.lesson-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
-        list.forEach(l => {
-          const a = document.createElement('a');
-          a.href = `lesson.html?id=${l.id}`;
-          a.className = 'lesson-card';
-          a.innerHTML = `
-            <img src="${l.img}" alt="${l.title}">
-            <div class="lesson-body">
-              <h3>${l.title}</h3>
-              <p class="muted">${l.desc}</p>
-              <div class="meta">${l.cat}</div>
-            </div>
-          `;
-          grid.appendChild(a);
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Filter kategori
+    const buttons = document.querySelectorAll('.filter-buttons button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
         });
-      }
-
-      render(LESSONS);
-
-      // search & filter
-      const search = document.getElementById('search');
-      const filter = document.getElementById('filter-cat');
-
-      function filterAndRender(){
-        const q = search.value.trim().toLowerCase();
-        const cat = filter.value;
-        const filtered = LESSONS.filter(l => {
-          const matchQ = l.title.toLowerCase().includes(q) || l.desc.toLowerCase().includes(q);
-          const matchCat = cat ? l.cat === cat : true;
-          return matchQ && matchCat;
-        });
-        render(filtered);
-      }
-
-      search.addEventListener('input', filterAndRender);
-      filter.addEventListener('change', filterAndRender);
+      });
     });
   </script>
 </body>
