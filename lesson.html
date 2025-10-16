@@ -4,39 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GuitarLearn | Lessons</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  
   <style>
-    /* Gaya CSS yang spesifik untuk halaman lessons bisa tetap di sini.
-      Saya akan sesuaikan sedikit agar tidak bentrok dengan styles.css
-    */
-
-    /* ---------- GLOBAL STYLE ---------- */
+    /* CSS yang spesifik untuk halaman ini saja */
     :root {
-      /* Variabel dari file utama sudah cukup, tapi ini bisa untuk override */
       --accent-hover: #ffb84c;
       --text-secondary: #bdbdbd;
     }
-    
-    body {
-        /* Hapus styling body dari sini karena sudah ada di styles.css */
-        /* Biarkan kosong atau isi dengan gaya yang spesifik hanya untuk halaman ini */
+
+    /* Menghapus style 'body' dari sini agar tidak menimpa styles.css */
+
+    .page-header {
+      text-align: center;
+      margin: 4rem 1rem 2rem;
+      animation: fadeSlideUp 1s ease;
     }
 
-    .container.page-title {
-      text-align: center;
-      margin-top: 4rem;
-      margin-bottom: 2rem;
-    }
-    
-    .page-title h1 {
+    .page-header h1 {
       font-size: 2.5rem;
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
 
-    .page-title p {
+    .page-header p {
       font-size: 1.1rem;
       color: var(--text-secondary);
       max-width: 600px;
@@ -49,7 +40,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.75rem;
-      margin: 2rem 0;
+      margin-bottom: 2rem;
     }
 
     .filter-buttons button {
@@ -76,9 +67,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
       padding-bottom: 4rem;
     }
 
@@ -86,13 +74,20 @@
       background: var(--surface);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: all 0.4s ease;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    .lesson-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .lesson-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(255,165,0,0.25);
+      box-shadow: 0 10px 25px rgba(255,165,0,0.2);
     }
 
     .lesson-card img {
@@ -119,7 +114,6 @@
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.75rem;
-      color: var(--text);
     }
 
     .lesson-btn {
@@ -138,6 +132,11 @@
       transform: scale(1.05);
     }
 
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -151,18 +150,18 @@
         <span>GuitarLearn</span>
       </div>
       <nav class="nav-links">
-        <a href="web gitar update 2.html">Home</a> <a href="lessons page.html">Lessons</a> <a href="#">Paths</a>
+        <a href="index.html">Home</a> <a href="lessons.html">Lessons</a> <a href="#">Paths</a>
         <a href="#">Tools</a>
       </nav>
     </div>
   </header>
-
-  <div class="container page-title">
+  
+  <section class="page-header container">
     <h1>Temukan Pelajaran Gitarmu Hari Ini</h1>
     <p>Pilih dari berbagai kategori dan mulai perjalanan musikmu bersama GuitarLearn.</p>
-  </div>
+  </section>
 
-  <div class="container">
+  <main class="container">
     <div class="filter-buttons">
       <button class="active" data-filter="all">Semua</button>
       <button data-filter="dasar">Dasar-Dasar</button>
@@ -170,28 +169,101 @@
       <button data-filter="teori">Teori Musik</button>
       <button data-filter="latihan">Latihan Jari</button>
     </div>
-  </div>
 
-  <section class="lessons-grid">
-    <div class="lesson-card" data-category="dasar">...</div>
-    <div class="lesson-card" data-category="dasar">...</div>
-    <div class="lesson-card" data-category="strumming">...</div>
-    <div class="lesson-card" data-category="strumming">...</div>
-    <div class="lesson-card" data-category="teori">...</div>
-    <div class="lesson-card" data-category="teori">...</div>
-    <div class="lesson-card" data-category="latihan">...</div>
-    <div class="lesson-card" data-category="latihan">...</div>
-  </section>
+    <div class="lessons-grid">
+      <div class="lesson-card" data-category="dasar">
+        <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?auto=format&fit=crop&w=900&q=60" alt="Anatomi Gitar">
+        <div class="lesson-content">
+          <div class="lesson-category">Dasar-Dasar</div>
+          <div class="lesson-title">Anatomi Gitar</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
 
+      <div class="lesson-card" data-category="dasar">
+        <img src="https://boldmusiclessons.com/wp-content/uploads/2022/05/person-tuning-guitar.jpg" alt="Tuning Gitar">
+        <div class="lesson-content">
+          <div class="lesson-category">Dasar-Dasar</div>
+          <div class="lesson-title">Cara Tuning Gitar</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
+
+      <div class="lesson-card" data-category="strumming">
+        <img src="https://image-tc.galaxy.tf/wijpeg-csgmjq3mmch78y86fmqn90xdu/falkensteiner-hotel-adriana-gitare.jpg" alt="Strumming Dasar">
+        <div class="lesson-content">
+          <div class="lesson-category">Strumming</div>
+          <div class="lesson-title">Pola Strumming Dasar</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
+
+      <div class="lesson-card" data-category="strumming">
+        <img src="https://schoolofrock.imgix.net/img/news-article-hero@2x/sorallstars22-8609-1670975805.jpg?auto=format&w=750" alt="Strumming Pop Rock">
+        <div class="lesson-content">
+          <div class="lesson-category">Strumming</div>
+          <div class="lesson-title">Strumming Pop & Rock</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
+
+      <div class="lesson-card" data-category="teori">
+        <img src="https://serupa.id/wp-content/uploads/2021/07/tangga-nada-mayor-dan-tangga-nada-minor.jpg" alt="Teori Musik">
+        <div class="lesson-content">
+          <div class="lesson-category">Teori Musik</div>
+          <div class="lesson-title">Pengenalan Not & Skala</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
+
+      <div class="lesson-card" data-category="teori">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgTNvZBMN7aKyNc5I45GeJ30k4YN3LVKbM4qShZ_nk-yQIr2xZY9szr94lTW0iWGPCkS2SJFvjGMVlyrt_70RAXI6X3aaaFbRn3W964MnY0_Yhz5bi76NhPIkrhXp1ig3FZRhS-Ug5EaDv/s1600/Slide1.JPG" alt="Interval">
+        <div class="lesson-content">
+          <div class="lesson-category">Teori Musik</div>
+          <div class="lesson-title">Mengenal Interval & Chord Dasar</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
+
+      <div class="lesson-card" data-category="latihan">
+        <img src="https://musisi.org/wp-content/uploads/2015/02/senam-jari-untuk-latihan-gitar.jpg" alt="Latihan Jari">
+        <div class="lesson-content">
+          <div class="lesson-category">Latihan Jari</div>
+          <div class="lesson-title">Pemanasan Jari Dasar</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
+
+      <div class="lesson-card" data-category="latihan">
+        <img src="https://msi-school.com/msi-content/uploads/2025/03/Apa-Itu-Guitar-Arpeggio.webp" alt="Latihan Kecepatan">
+        <div class="lesson-content">
+          <div class="lesson-category">Latihan Jari</div>
+          <div class="lesson-title">Latihan Kecepatan & Koordinasi</div>
+          <button class="lesson-btn">Mulai Belajar</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  
   <footer class="footer">
     <div class="container">
-      <p>© 2025 GuitarLearn — Kunci Gitarmu di Tanganmu</p>
+      <p>© 2025 GuitarLearn</p>
     </div>
   </footer>
 
   <script>
-    // Javascript bisa tetap di sini
+    // Intersection Observer untuk animasi muncul
     const cards = document.querySelectorAll('.lesson-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 }); // Sedikit diubah agar animasi lebih cepat muncul
+    cards.forEach(card => observer.observe(card));
+
+    // Filter kategori
     const buttons = document.querySelectorAll('.filter-buttons button');
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
