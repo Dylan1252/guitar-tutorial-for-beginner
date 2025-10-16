@@ -57,6 +57,21 @@ img {
   color: var(--accent);
 }
 
+.logo svg,
+.guitar-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  animation: wave 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Supaya logo tidak melar di layout fleksibel */
+.nav-inner {
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
 .guitar-icon {
   width: 28px;
   height: 28px;
@@ -231,3 +246,4 @@ img {
     display: none;
   }
 }
+
