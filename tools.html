@@ -5,23 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GuitarLearn | Tools</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Lato&display=swap" rel="stylesheet">
-  <style>
-    /* ======= GLOBAL STYLE ======= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  
+  <link rel="stylesheet" href="styles.css">
 
+  <style>
+    /* ======= LOCAL STYLES ======= */
+    /* ✅ 2. CSS Body disesuaikan agar tidak bentrok */
     body {
       font-family: 'Lato', sans-serif;
       background-color: #121212;
       color: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 60px 20px;
       animation: fadeIn 0.8s ease-in;
     }
 
@@ -32,7 +25,8 @@
     /* ======= HERO ======= */
     .hero {
       text-align: center;
-      margin-bottom: 50px;
+      padding-top: 5rem; /* Menggunakan padding */
+      padding-bottom: 3rem;
       animation: fadeDown 0.7s ease-in;
     }
 
@@ -56,7 +50,7 @@
       overflow: hidden;
       width: 100%;
       max-width: 700px;
-      margin-bottom: 30px;
+      margin: 0 auto 30px; /* Diberi margin auto agar center */
     }
 
     .tab-button {
@@ -91,209 +85,109 @@
       padding: 40px 30px;
       border-radius: 10px;
       animation: fadeUp 0.6s ease;
+      margin: 0 auto 4rem; /* Diberi margin auto */
     }
 
     .tab-content.active {
       display: block;
     }
 
-    /* ======= TUNER ======= */
-    .tuner-display {
-      text-align: center;
-    }
-
-    .tuner-display img {
-      width: 150px;
-      opacity: 0.9;
-      margin-bottom: 20px;
-    }
-
-    .tuner-frequency {
-      font-size: 1.3rem;
-      margin-top: 10px;
-      color: #FFA500;
-    }
-
-    /* ======= METRONOME ======= */
-    .metronome {
-      text-align: center;
-    }
-
-    .metronome-bpm {
-      font-size: 3rem;
-      color: #FFA500;
-      margin-bottom: 20px;
-    }
-
-    .bpm-slider {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-
-    .beat-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #FFA500;
-      margin: 20px auto;
-      opacity: 0.2;
-      transition: opacity 0.1s ease;
-    }
-
-    /* ======= CHORD LIBRARY ======= */
-    .chord-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 20px;
-    }
-
-    .chord-card {
-      background-color: #222;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      font-weight: 600;
-      color: #f5f5f5;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .chord-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 10px rgba(255, 165, 0, 0.4);
-      color: #FFA500;
-    }
-
-    /* ======= MODAL ======= */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal-content {
-      background-color: #1e1e1e;
-      padding: 30px;
-      border-radius: 10px;
-      width: 300px;
-      text-align: center;
-      animation: fadeUp 0.4s ease;
-    }
-
-    .modal-content img {
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 15px;
-    }
-
-    .close-btn {
-      background: #FFA500;
-      border: none;
-      color: #121212;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .close-btn:hover {
-      background: #fff;
-    }
+    /* Sisa style spesifik halaman (Tuner, Metronome, dsb.) tidak diubah */
+    .tuner-display { text-align: center; }
+    .tuner-display img { width: 150px; opacity: 0.9; margin-bottom: 20px; }
+    .tuner-frequency { font-size: 1.3rem; margin-top: 10px; color: #FFA500; }
+    .metronome { text-align: center; }
+    .metronome-bpm { font-size: 3rem; color: #FFA500; margin-bottom: 20px; }
+    .bpm-slider { width: 100%; margin-bottom: 15px; }
+    .beat-dot { width: 20px; height: 20px; border-radius: 50%; background-color: #FFA500; margin: 20px auto; opacity: 0.2; transition: opacity 0.1s ease; }
+    .chord-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; }
+    .chord-card { background-color: #222; border-radius: 8px; padding: 20px; text-align: center; font-weight: 600; color: #f5f5f5; cursor: pointer; transition: all 0.3s ease; }
+    .chord-card:hover { transform: translateY(-5px); box-shadow: 0 0 10px rgba(255, 165, 0, 0.4); color: #FFA500; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 1000; animation: fadeIn 0.3s ease; }
+    .modal-content { background-color: #1e1e1e; padding: 30px; border-radius: 10px; width: 300px; text-align: center; animation: fadeUp 0.4s ease; }
+    .modal-content img { width: 100%; border-radius: 5px; margin-bottom: 15px; }
+    .close-btn { background: #FFA500; border: none; color: #121212; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .close-btn:hover { background: #ffb84c; }
 
     /* ======= ANIMATIONS ======= */
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 
 <body>
 
-<header class="navbar">
-  <div class="container nav-inner">
-    <div class="logo">
-      <svg class="guitar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-        <path fill="#FFA500" d="M48.2 3.7c-.5-.5-1.2-.7-1.8-.7s-1.3.2-1.8.7l-3.6 3.6c-.8.8-.8 2.1 0 2.9l1.8 1.8L23.3 32.3c-1.7-1-3.9-.8-5.4.6l-9.3 9.3c-3 3-3 7.8 0 10.8s7.8 3 10.8 0l9.3-9.3c1.4-1.4 1.7-3.6.6-5.4L52 20.7l1.8 1.8c.8.8 2.1.8 2.9 0l3.6-3.6c1-1 1-2.6 0-3.6L48.2 3.7z"/>
-      </svg>
-      <span>GuitarLearn</span>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <svg class="guitar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+          <path fill="#FFA500" d="M48.2 3.7c-.5-.5-1.2-.7-1.8-.7s-1.3.2-1.8.7l-3.6 3.6c-.8.8-.8 2.1 0 2.9l1.8 1.8L23.3 32.3c-1.7-1-3.9-.8-5.4.6l-9.3 9.3c-3 3-3 7.8 0 10.8s7.8 3 10.8 0l9.3-9.3c1.4-1.4 1.7-3.6.6-5.4L52 20.7l1.8 1.8c.8.8 2.1.8 2.9 0l3.6-3.6c1-1 1-2.6 0-3.6L48.2 3.7z"/>
+        </svg>
+        <span>GuitarLearn</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="paths.html">Paths</a>
+        <a href="tools.html" class="active">Tools</a> </nav>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="lessons.html">Lessons</a>
-      <a href="paths.html" class="active">Paths</a>
-      <a href="tools.html">Tools</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
-  <section class="hero">
-    <h1>Alat Bantu Gitar Digital</h1>
-    <p>Temukan tuner, metronom, dan pustaka chord dalam satu tempat.</p>
-  </section>
+  <main class="container">
+    <section class="hero">
+      <h1>Alat Bantu Gitar Digital</h1>
+      <p>Temukan tuner, metronom, dan pustaka chord dalam satu tempat.</p>
+    </section>
 
-  <!-- Tabs Menu -->
-  <div class="tabs">
-    <button class="tab-button active" data-tab="tuner">🎵 Tuner</button>
-    <button class="tab-button" data-tab="metronome">🕒 Metronome</button>
-    <button class="tab-button" data-tab="chords">🎸 Chord Library</button>
-  </div>
-
-  <!-- Tab Content: Tuner -->
-  <div id="tuner" class="tab-content active">
-    <div class="tuner-display">
-      <img src="https://cdn-icons-png.flaticon.com/512/921/921489.png" alt="Tuner Icon">
-      <p>Aktifkan mikrofon untuk mendeteksi nada secara real-time.</p>
-      <button class="close-btn">Mulai Tuning</button>
-      <div class="tuner-frequency">🎸 Nada Terdeteksi: A4 (440 Hz)</div>
+    <div class="tabs">
+      <button class="tab-button active" data-tab="tuner">🎵 Tuner</button>
+      <button class="tab-button" data-tab="metronome">🕒 Metronome</button>
+      <button class="tab-button" data-tab="chords">🎸 Chord Library</button>
     </div>
-  </div>
 
-  <!-- Tab Content: Metronome -->
-  <div id="metronome" class="tab-content">
-    <div class="metronome">
-      <div class="metronome-bpm" id="bpmValue">100 BPM</div>
-      <input type="range" min="60" max="200" value="100" class="bpm-slider" id="bpmSlider">
-      <button class="close-btn" id="startMetronome">Mulai</button>
-      <div class="beat-dot" id="beatDot"></div>
+    <div id="tuner" class="tab-content active">
+      <div class="tuner-display">
+        <img src="https://cdn-icons-png.flaticon.com/512/921/921489.png" alt="Tuner Icon">
+        <p>Aktifkan mikrofon untuk mendeteksi nada secara real-time.</p>
+        <button class="close-btn">Mulai Tuning</button>
+        <div class="tuner-frequency">🎸 Nada Terdeteksi: A4 (440 Hz)</div>
+      </div>
     </div>
-  </div>
 
-  <!-- Tab Content: Chords -->
-  <div id="chords" class="tab-content">
-    <div class="chord-grid">
-      <div class="chord-card" data-chord="A">A</div>
-      <div class="chord-card" data-chord="C">C</div>
-      <div class="chord-card" data-chord="D">D</div>
-      <div class="chord-card" data-chord="E">E</div>
-      <div class="chord-card" data-chord="G">G</div>
-      <div class="chord-card" data-chord="Am">Am</div>
-      <div class="chord-card" data-chord="Em">Em</div>
-      <div class="chord-card" data-chord="Dm">Dm</div>
+    <div id="metronome" class="tab-content">
+      <div class="metronome">
+        <div class="metronome-bpm" id="bpmValue">100 BPM</div>
+        <input type="range" min="60" max="200" value="100" class="bpm-slider" id="bpmSlider">
+        <button class="close-btn" id="startMetronome">Mulai</button>
+        <div class="beat-dot" id="beatDot"></div>
+      </div>
     </div>
-  </div>
 
-  <!-- Modal -->
+    <div id="chords" class="tab-content">
+      <div class="chord-grid">
+        <div class="chord-card" data-chord="A">A</div>
+        <div class="chord-card" data-chord="C">C</div>
+        <div class="chord-card" data-chord="D">D</div>
+        <div class="chord-card" data-chord="E">E</div>
+        <div class="chord-card" data-chord="G">G</div>
+        <div class="chord-card" data-chord="Am">Am</div>
+        <div class="chord-card" data-chord="Em">Em</div>
+        <div class="chord-card" data-chord="Dm">Dm</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 GuitarLearn</p>
+    </div>
+  </footer>
+
   <div class="modal" id="chordModal">
     <div class="modal-content">
       <h3 id="chordName">Chord A</h3>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_major_chord_for_guitar.svg/200px-A_major_chord_for_guitar.svg.png" alt="Chord Diagram">
-      <button class="close-btn" id="closeModal">Tutup</button>
+      <img id="chordImage" src="" alt="Chord Diagram"> <button class="close-btn" id="closeModal">Tutup</button>
     </div>
   </div>
 
@@ -306,12 +200,9 @@
       btn.addEventListener("click", () => {
         tabButtons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-
         const target = btn.getAttribute("data-tab");
-        tabContents.forEach(tc => {
-          tc.classList.remove("active");
-          if (tc.id === target) tc.classList.add("active");
-        });
+        tabContents.forEach(tc => tc.classList.remove("active"));
+        document.getElementById(target).classList.add("active");
       });
     });
 
@@ -324,18 +215,18 @@
 
     bpmSlider.addEventListener("input", () => {
       bpmValue.textContent = bpmSlider.value + " BPM";
-      if (isPlaying) startMetronome();
+      if (isPlaying) {
+        clearInterval(interval);
+        startMetronome();
+      }
     });
-
     startBtn.addEventListener("click", () => {
       isPlaying = !isPlaying;
       startBtn.textContent = isPlaying ? "Berhenti" : "Mulai";
       if (isPlaying) startMetronome();
       else clearInterval(interval);
     });
-
     function startMetronome() {
-      clearInterval(interval);
       const bpm = parseInt(bpmSlider.value);
       const intervalMs = 60000 / bpm;
       interval = setInterval(() => {
@@ -344,16 +235,29 @@
       }, intervalMs);
     }
 
-    // ===== CHORD MODAL =====
+    // ✅ 6. JAVASCRIPT MODAL DISEMPURNAKAN
     const chordCards = document.querySelectorAll(".chord-card");
     const chordModal = document.getElementById("chordModal");
     const chordName = document.getElementById("chordName");
+    const chordImage = document.getElementById("chordImage");
     const closeModal = document.getElementById("closeModal");
+
+    const chordImageUrls = {
+      A: 'https://www.chordbank.com/media/a-major-chord-open-position-2-1.jpg',
+      C: 'https://www.chordbank.com/media/c-major-chord-open-position-2-1.jpg',
+      D: 'https://www.chordbank.com/media/d-major-chord-open-position-2-1.jpg',
+      E: 'https://www.chordbank.com/media/e-major-chord-open-position-1.jpg',
+      G: 'https://www.chordbank.com/media/g-major-chord-open-position-1.jpg',
+      Am: 'https://www.chordbank.com/media/a-minor-chord-open-position-1.jpg',
+      Em: 'https://www.chordbank.com/media/e-minor-chord-open-position-2-1.jpg',
+      Dm: 'https://www.chordbank.com/media/d-minor-chord-open-position-1.jpg'
+    };
 
     chordCards.forEach(card => {
       card.addEventListener("click", () => {
         const name = card.getAttribute("data-chord");
         chordName.textContent = "Chord " + name;
+        chordImage.src = chordImageUrls[name] || ''; // Mengubah sumber gambar
         chordModal.style.display = "flex";
       });
     });
@@ -368,4 +272,3 @@
   </script>
 </body>
 </html>
-
