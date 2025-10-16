@@ -1,249 +1,261 @@
-/* ========== ROOT VARIABLES ========== */
-:root {
-  --bg: #121212;
-  --surface: #1E1E1E;
-  --text: #EAEAEA;
-  --accent: #FFA500;
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Lato", sans-serif;
-  --transition: all 0.3s ease;
-}
+/* ==============================================
+   🎸 GUITARLEARN GLOBAL STYLES
+   Theme: Clean Dark Startup Elegan
+   ============================================== */
 
-/* ========== RESET & GLOBAL ========== */
+/* ======= RESET & VARIABLES ======= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --bg-hover: #222;
+  --text: #f5f5f5;
+  --text-dim: #cccccc;
+  --accent: #ffa500;
+  --accent-hover: #ffb733;
+  --border-light: rgba(255, 255, 255, 0.1);
+  --transition: all 0.3s ease;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Lato', sans-serif;
+}
+
+/* ======= GLOBAL BODY ======= */
 body {
-  background-color: var(--bg);
-  color: var(--text);
   font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  border-radius: 10px;
-}
-
+/* ======= CONTAINERS ======= */
 .container {
   width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-/* ========== NAVBAR ========== */
+/* ======= HEADINGS ======= */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ======= LINKS ======= */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ==============================================
+   NAVBAR
+   ============================================== */
 .navbar {
-  background-color: var(--surface);
-  padding: 1rem 0;
-  border-bottom: 1px solid #2a2a2a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .nav-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0.7rem 0;
 }
 
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.4rem;
   color: var(--accent);
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 
-.logo svg,
-.guitar-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
+.logo .guitar-icon {
+  width: 32px !important;
+  height: 32px !important;
   animation: wave 2.5s ease-in-out infinite;
   transform-origin: center;
 }
 
-/* Supaya logo tidak melar di layout fleksibel */
-.nav-inner {
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-.guitar-icon {
-  width: 28px;
-  height: 28px;
-  animation: wave 2.5s ease-in-out infinite;
-  transform-origin: center;
-}
-
-@keyframes wave {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
+/* Links */
 .nav-links a {
-  color: var(--text);
-  text-decoration: none;
   margin-left: 1.5rem;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0.3px;
   transition: var(--transition);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--accent);
 }
 
-/* ========== HERO SECTION ========== */
+/* Wave animation for logo */
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+/* ==============================================
+   HERO SECTIONS (GLOBAL STYLE)
+   ============================================== */
 .hero {
-  padding: 5rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
-}
-
-.hero-text {
-  flex: 1;
-}
-
-.hero-text h1 {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-text p {
-  font-size: 1.1rem;
-  color: #bbb;
-  margin-bottom: 2rem;
-}
-
-.btn-primary {
-  background-color: var(--accent);
-  color: var(--bg);
-  padding: 0.9rem 1.8rem;
-  border-radius: 8px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.btn-primary:hover {
-  background-color: #ffb733;
-  box-shadow: 0 0 12px var(--accent);
-}
-
-.hero-image {
-  flex: 1;
   text-align: center;
+  padding-top: 110px;
+  padding-bottom: 70px;
 }
 
-/* ========== FEATURES ========== */
-.features {
-  background-color: var(--surface);
-  padding: 4rem 0;
-  text-align: center;
-}
-
-.features h2 {
-  font-family: var(--font-heading);
-  margin-bottom: 2rem;
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.feature-card {
-  background: #181818;
-  padding: 2rem;
-  border-radius: 12px;
-  transition: var(--transition);
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 12px rgba(255, 165, 0, 0.2);
-}
-
-.feature-card .icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 1rem;
+.hero h1 {
   color: var(--accent);
+  font-size: 2.4rem;
+  margin-bottom: 10px;
 }
 
-/* ========== LEARNING PATHS ========== */
-.learning-paths {
-  padding: 5rem 0;
-  text-align: center;
+.hero p {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+}
+
+/* ==============================================
+   PATHS PAGE – PROGRESS CARDS
+   ============================================== */
+.paths-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  padding-bottom: 60px;
 }
 
 .path-card {
-  background-color: var(--surface);
+  background-color: var(--bg-card);
   border-radius: 12px;
-  overflow: hidden;
+  padding: 25px 20px;
   transition: var(--transition);
+  border: 1px solid var(--border-light);
 }
 
 .path-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(255, 165, 0, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+  border-color: var(--accent);
 }
 
-.card-body {
-  padding: 1rem 1.5rem 2rem;
+.path-card h3 {
+  color: var(--accent);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
-/* ========== TOOLS SECTION ========== */
-.tools {
-  background-color: var(--surface);
-  padding: 4rem 0;
-  text-align: center;
+.path-card p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
 }
 
-.tool-card {
-  background-color: #181818;
-  padding: 2.5rem 1.5rem;
-  border-radius: 10px;
-  transition: var(--transition);
+/* Progress Bar */
+.progress-bar {
+  height: 8px;
+  width: 100%;
+  background-color: #2a2a2a;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: 20px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* ==============================================
+   BUTTONS
+   ============================================== */
+.btn {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #121212;
   font-weight: 600;
-}
-
-.tool-card:hover {
-  box-shadow: 0 0 20px rgba(255, 165, 0, 0.25);
-  transform: translateY(-5px);
-}
-
-/* ========== FOOTER ========== */
-.footer {
-  background-color: #181818;
-  padding: 1.5rem 0;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: var(--transition);
   text-align: center;
-  color: #aaa;
-  font-size: 0.9rem;
-  border-top: 1px solid #2a2a2a;
 }
 
-/* ========== RESPONSIVE ========== */
+.btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ==============================================
+   FOOTER
+   ============================================== */
+footer {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border-light);
+  margin-top: 60px;
+}
+
+/* ==============================================
+   ANIMATIONS
+   ============================================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease both;
+}
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
 @media (max-width: 768px) {
-  .hero-content {
+  .nav-inner {
     flex-direction: column;
-    text-align: center;
   }
 
   .nav-links {
-    display: none;
+    margin-top: 10px;
+  }
+
+  .path-card {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
   }
 }
-
