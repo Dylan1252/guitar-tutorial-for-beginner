@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuitarLearn | Learning Paths</title>
+
+  <!-- Link ke CSS Global -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- LOCAL STYLES (Hanya untuk halaman Learning Paths) ---------- */
+
+    body {
+      background: linear-gradient(145deg, #121212, #1c1c1e);
+      color: #f5f5f5;
+      font-family: 'Lato', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-top: 7rem;
+      animation: fadeSlideUp 1s ease;
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      color: #ffa500;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #bdbdbd;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Filter Buttons */
+    .path-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .path-filters button {
+      background: #1f1f1f;
+      border: 2px solid #ffa500;
+      color: #ffa500;
+      padding: 0.6rem 1.25rem;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .path-filters button.active,
+    .path-filters button:hover {
+      background: #ffa500;
+      color: #121212;
+      box-shadow: 0 0 12px rgba(255, 165, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Paths Grid */
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto 4rem;
+    }
+
+    .path-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(30, 30, 30, 0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: all 0.4s ease;
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    .path-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .path-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(255,165,0,0.25);
+    }
+
+    .path-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .path-content {
+      padding: 1.25rem;
+    }
+
+    .path-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .path-desc {
+      color: #bdbdbd;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      background: #333;
+      border-radius: 25px;
+      overflow: hidden;
+      height: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ffa500, #ffb84c);
+      border-radius: 25px;
+      transition: width 1.2s ease-in-out;
+    }
+
+    .lesson-count {
+      font-size: 0.9rem;
+      color: #ffb84c;
+      margin-bottom: 1rem;
+    }
+
+    .path-btn {
+      background: #ffa500;
+      border: none;
+      color: #121212;
+      font-weight: 700;
+      border-radius: 25px;
+      padding: 0.6rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .path-btn:hover {
+      background: #ffb84c;
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255,165,0,0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #bdbdbd;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ Navbar dari homepage -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <svg class="guitar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+          <path fill="#FFA500" d="M48.2 3.7c-.5-.5-1.2-.7-1.8-.7s-1.3.2-1.8.7l-3.6 3.6c-.8.8-.8 2.1 0 2.9l1.8 1.8L23.3 32.3c-1.7-1-3.9-.8-5.4.6l-9.3 9.3c-3 3-3 7.8 0 10.8s7.8 3 10.8 0l9.3-9.3c1.4-1.4 1.7-3.6.6-5.4L52 20.7l1.8 1.8c.8.8 2.1.8 2.9 0l3.6-3.6c1-1 1-2.6 0-3.6L48.2 3.7z"/>
+        </svg>
+        <span>GuitarLearn</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="paths.html" class="active">Paths</a>
+        <a href="#">Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ✅ Hero Section -->
+  <section class="hero">
+    <h1>Jalur Belajar Gitarmu</h1>
+    <p>Ikuti jalur yang sesuai dengan kemampuanmu dan kuasai gitar langkah demi langkah.</p>
+  </section>
+
+  <!-- ✅ Filter Buttons -->
+  <div class="path-filters">
+    <button class="active" data-filter="all">Semua Jalur</button>
+    <button data-filter="pemula">Pemula</button>
+    <button data-filter="menengah">Menengah</button>
+    <button data-filter="lanjutan">Lanjutan</button>
+  </div>
+
+  <!-- ✅ Learning Path Cards -->
+  <section class="paths-grid">
+    <!-- 1 -->
+    <div class="path-card" data-category="pemula">
+      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=60" class="path-image" alt="Pemula Total">
+      <div class="path-content">
+        <div class="path-title">Pemula Total</div>
+        <div class="path-desc">Mulai dari nol: kenali gitar, tuning, dan chord dasar.</div>
+        <div class="progress-container"><div class="progress-bar" data-progress="60"></div></div>
+        <div class="lesson-count">10 Pelajaran</div>
+        <button class="path-btn">Lanjutkan Belajar</button>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="path-card" data-category="menengah">
+      <img src="https://images.unsplash.com/photo-1525362081669-2a03c727c6e0?auto=format&fit=crop&w=900&q=60" class="path-image" alt="Strumming dan Ritme">
+      <div class="path-content">
+        <div class="path-title">Strumming dan Ritme</div>
+        <div class="path-desc">Pelajari pola strumming dan ritme untuk berbagai genre musik.</div>
+        <div class="progress-container"><div class="progress-bar" data-progress="45"></div></div>
+        <div class="lesson-count">8 Pelajaran</div>
+        <button class="path-btn">Lanjutkan Belajar</button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="path-card" data-category="menengah">
+      <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=900&q=60" class="path-image" alt="Teori Musik">
+      <div class="path-content">
+        <div class="path-title">Teori Musik Gitaris</div>
+        <div class="path-desc">Pahami not, skala, interval, dan harmoni dengan cara praktis.</div>
+        <div class="progress-container"><div class="progress-bar" data-progress="30"></div></div>
+        <div class="lesson-count">7 Pelajaran</div>
+        <button class="path-btn">Lanjutkan Belajar</button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="path-card" data-category="lanjutan">
+      <img src="https://images.unsplash.com/photo-1612036782180-6f63ad54d74c?auto=format&fit=crop&w=900&q=60" class="path-image" alt="Fingerstyle Dasar">
+      <div class="path-content">
+        <div class="path-title">Fingerstyle Dasar</div>
+        <div class="path-desc">Pelajari teknik fingerpicking yang halus dan indah untuk lagu akustik.</div>
+        <div class="progress-container"><div class="progress-bar" data-progress="15"></div></div>
+        <div class="lesson-count">6 Pelajaran</div>
+        <button class="path-btn">Lanjutkan Belajar</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 GuitarLearn</footer>
+
+  <script>
+    // Fade & Slide Up Animation
+    const cards = document.querySelectorAll('.path-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const bar = entry.target.querySelector('.progress-bar');
+          const progress = bar.getAttribute('data-progress');
+          bar.style.width = progress + '%';
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Filter Jalur
+    const buttons = document.querySelectorAll('.path-filters button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
