@@ -13,7 +13,34 @@
 
   <style>
     /* ---------- LOCAL STYLES (Hanya untuk halaman Learning Paths) ---------- */
+    /* Local override untuk paths & tools */
+    .navbar-local {
+      background: rgba(30, 30, 30, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+    }
 
+    .navbar-local .guitar-icon {
+      width: 24px;  /* lebih kecil dari homepage */
+      height: 24px;
+    }
+
+    .navbar-local .logo span {
+      font-size: 1.2rem;
+      color: #FFA500;
+    }
+
+    .navbar-local .nav-links a {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .navbar-local .nav-links a:hover,
+    .navbar-local .nav-links a.active {
+      color: #FFA500;
+      text-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+    }
+    
     body {
       background: linear-gradient(145deg, #121212, #1c1c1e);
       color: #f5f5f5;
@@ -183,7 +210,7 @@
 
 <body>
 
-  <header class="navbar">
+<header class="navbar navbar-local">
   <div class="container nav-inner">
     <div class="logo">
       <svg class="guitar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
@@ -193,12 +220,13 @@
     </div>
     <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="lesson.html">Lessons</a>
-      <a href="paths.html">Paths</a>
+      <a href="lessons.html">Lessons</a>
+      <a href="paths.html" class="active">Paths</a>
       <a href="tools.html">Tools</a>
     </nav>
   </div>
 </header>
+
 
   <!-- ✅ Hero Section -->
   <section class="hero">
@@ -301,6 +329,7 @@
   </script>
 </body>
 </html>
+
 
 
 
