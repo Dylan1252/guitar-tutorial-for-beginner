@@ -24,10 +24,10 @@
 
     /* ======= HERO ======= */
     .hero {
-      text-align: center;
-      padding-top: 5rem; /* Menggunakan padding */
-      padding-bottom: 3rem;
-      animation: fadeDown 0.7s ease-in;
+      display: flex;
+      flex-direction: column; /* <-- Tambahkan baris ini */
+      align-items: center;   /* <-- Ini akan membuatnya rapi di tengah */
+      text-align: center;      /* <-- Pastikan teks juga di tengah */
     }
 
     .hero h1 {
@@ -272,3 +272,4 @@
   </script>
 </body>
 </html>
+
