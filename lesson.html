@@ -1,96 +1,211 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lesson — GuitarLearn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuitarLearn | Lessons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Gaya CSS yang spesifik untuk halaman lessons bisa tetap di sini.
+      Saya akan sesuaikan sedikit agar tidak bentrok dengan styles.css
+    */
+
+    /* ---------- GLOBAL STYLE ---------- */
+    :root {
+      /* Variabel dari file utama sudah cukup, tapi ini bisa untuk override */
+      --accent-hover: #ffb84c;
+      --text-secondary: #bdbdbd;
+    }
+    
+    body {
+        /* Hapus styling body dari sini karena sudah ada di styles.css */
+        /* Biarkan kosong atau isi dengan gaya yang spesifik hanya untuk halaman ini */
+    }
+
+    .container.page-title {
+      text-align: center;
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+    }
+    
+    .page-title h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-title p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ---------- FILTER BUTTONS ---------- */
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+
+    .filter-buttons button {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.25rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: var(--accent);
+      color: #121212;
+      box-shadow: 0 0 12px rgba(255, 165, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- LESSON GRID ---------- */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 4rem;
+    }
+
+    .lesson-card {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: all 0.4s ease;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(255,165,0,0.25);
+    }
+
+    .lesson-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .lesson-content {
+      padding: 1.25rem;
+    }
+
+    .lesson-category {
+      font-size: 0.85rem;
+      color: var(--accent-hover);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .lesson-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .lesson-btn {
+      background: var(--accent);
+      border: none;
+      color: #121212;
+      font-weight: 700;
+      border-radius: 25px;
+      padding: 0.6rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .lesson-btn:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html">🎸 GuitarLearn</a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="lessons.html">Lessons</a>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <svg class="guitar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+          <path fill="#FFA500" d="M48.2 3.7c-.5-.5-1.2-.7-1.8-.7s-1.3.2-1.8.7l-3.6 3.6c-.8.8-.8 2.1 0 2.9l1.8 1.8L23.3 32.3c-1.7-1-3.9-.8-5.4.6l-9.3 9.3c-3 3-3 7.8 0 10.8s7.8 3 10.8 0l9.3-9.3c1.4-1.4 1.7-3.6.6-5.4L52 20.7l1.8 1.8c.8.8 2.1.8 2.9 0l3.6-3.6c1-1 1-2.6 0-3.6L48.2 3.7z"/>
+        </svg>
+        <span>GuitarLearn</span>
+      </div>
+      <nav class="nav-links">
+        <a href="web gitar update 2.html">Home</a> <a href="lessons page.html">Lessons</a> <a href="#">Paths</a>
+        <a href="#">Tools</a>
       </nav>
     </div>
   </header>
 
-  <main class="container section">
-    <a class="back" href="lessons.html">← Kembali ke Lessons</a>
+  <div class="container page-title">
+    <h1>Temukan Pelajaran Gitarmu Hari Ini</h1>
+    <p>Pilih dari berbagai kategori dan mulai perjalanan musikmu bersama GuitarLearn.</p>
+  </div>
 
-    <article id="lesson-content">
-      <!-- JS will fill lesson details based on ?id=... -->
-      <h1 id="lesson-title">Loading...</h1>
+  <div class="container">
+    <div class="filter-buttons">
+      <button class="active" data-filter="all">Semua</button>
+      <button data-filter="dasar">Dasar-Dasar</button>
+      <button data-filter="strumming">Strumming</button>
+      <button data-filter="teori">Teori Musik</button>
+      <button data-filter="latihan">Latihan Jari</button>
+    </div>
+  </div>
 
-      <div class="lesson-top">
-        <div class="video-area">
-          <!-- placeholder embed: replace src with your video url or embed -->
-          <div class="video-placeholder">
-            <div class="play-icon">▶</div>
-            <p class="muted">Video player placeholder — ganti dengan embed YouTube atau file video kalian</p>
-          </div>
-        </div>
+  <section class="lessons-grid">
+    <div class="lesson-card" data-category="dasar">...</div>
+    <div class="lesson-card" data-category="dasar">...</div>
+    <div class="lesson-card" data-category="strumming">...</div>
+    <div class="lesson-card" data-category="strumming">...</div>
+    <div class="lesson-card" data-category="teori">...</div>
+    <div class="lesson-card" data-category="teori">...</div>
+    <div class="lesson-card" data-category="latihan">...</div>
+    <div class="lesson-card" data-category="latihan">...</div>
+  </section>
 
-        <aside class="lesson-meta">
-          <div class="card">
-            <div class="card-body">
-              <h3>Info Lesson</h3>
-              <p><strong>Category:</strong> <span id="lesson-cat">-</span></p>
-              <p><strong>Duration:</strong> 5–12 mins (est)</p>
-              <a id="start-btn" class="btn primary" href="#play">Mulai</a>
-            </div>
-          </div>
-        </aside>
-      </div>
-
-      <section class="section">
-        <h2>Lesson Notes</h2>
-        <div id="lesson-notes">
-          <p class="muted">Deskripsi lesson akan tampil di sini.</p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Chord Diagrams</h2>
-        <div class="chords-grid">
-          <!-- placeholder local images -->
-          <img src="images/chords/C_major.png" alt="C major" onerror="this.style.opacity=0.4">
-          <img src="images/chords/G_major.png" alt="G major" onerror="this.style.opacity=0.4">
-        </div>
-      </section>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">© 2025 GuitarLearn</div>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 GuitarLearn — Kunci Gitarmu di Tanganmu</p>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
   <script>
-    // sample lessons data (same as lessons.html)
-    const LESSONS = {
-      'open-chords': { id:'open-chords', title:'Open Chords (C G D E A)', cat:'chords', notes:'Pelajari posisi jari dan transisi antar akor.'},
-      'strumming-basic': { id:'strumming-basic', title:'Basic Strumming Patterns', cat:'strumming', notes:'Mulai dengan downstroke, kemudian tambahkan upstroke.'},
-      'first-song': { id:'first-song', title:'Play Your First Song', cat:'songs', notes:'Kombinasikan chord dan pola strumming sederhana.'},
-      'practice-tips': { id:'practice-tips', title:'Practice Tips for Beginners', cat:'tips', notes:'Latihan rutin 10-20 menit setiap hari.'}
-    };
-
-    function getQueryParam(name){
-      const params = new URLSearchParams(location.search);
-      return params.get(name);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const id = getQueryParam('id') || 'open-chords';
-      const lesson = LESSONS[id] || Object.values(LESSONS)[0];
-
-      document.getElementById('lesson-title').textContent = lesson.title;
-      document.getElementById('lesson-cat').textContent = lesson.cat;
-      document.getElementById('lesson-notes').innerHTML = `<p>${lesson.notes}</p><p class="muted">Ini adalah template. Ganti konten ini sesuai lesson asli.</p>`;
-      document.getElementById('start-btn').href = '#';
+    // Javascript bisa tetap di sini
+    const cards = document.querySelectorAll('.lesson-card');
+    const buttons = document.querySelectorAll('.filter-buttons button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
   </script>
 </body>
