@@ -21,12 +21,11 @@
 
     /* Hero Section disesuaikan dengan navbar statis */
     .hero {
-      text-align: center;
-      padding-top: 5rem; /* Mengganti margin-top menjadi padding-top */
-      padding-bottom: 2rem;
-      animation: fadeSlideUp 1s ease;
+      display: flex;
+      flex-direction: column; /* <-- Tambahkan baris ini */
+      align-items: center;   /* <-- Ini akan membuatnya rapi di tengah */
+      text-align: center;      /* <-- Pastikan teks juga di tengah */
     }
-
     .hero h1 {
       font-family: 'Poppins', sans-serif;
       font-size: 2.5rem;
@@ -290,4 +289,5 @@
   </script>
 </body>
 </html>
+
 
